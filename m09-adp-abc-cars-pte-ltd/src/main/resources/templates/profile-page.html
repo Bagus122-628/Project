@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <title>Profile</title>
+  </head>
+
+  <body>
+    <div th:replace="/fragments/header"></div>
+    <main class="container" th:object="${user}">
+      <div class="row">
+        <div class="col-4">
+          <div class="card shadow p-2 ms-auto" style="width: 20vw">
+            <img th:src="*{profile}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <div class="text-muted">
+                <i class="bi bi-envelope-open-fill"> : </i> <span th:text="*{username}"></span><br />
+                <i class="bi bi-telephone-fill"> : </i> <span th:text="*{phoneNumber}"></span>
+              </div>
+              <hr />
+              <a th:href="@{'update/' + *{id}}" class="btn btn-outline-warning ms-auto"> edit</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="d-flex justify-content-between">
+            <h3>Posted Car</h3>
+            <a href="post" class="btn btn-success">add</a>
+          </div>
+          <div th:if="${message}" th:text="${message}" class="alert alert-success"></div>
+          <table class="table" aria-describedby="car table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Make</th>
+                <th scope="col">Model</th>
+                <th scope="col">year</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="list : ${lists}" th:object="${list}">
+                <th th:text="*{id}" scope="row"></th>
+                <td th:text="*{make}"></td>
+                <td th:text="*{model}">Otto</td>
+                <td th:text="*{year}">@mdo</td>
+                <td th:text="*{price}">Otto</td>
+                <td th:if="*{isActive}">active</td>
+                <td th:if="*{!isActive}">dactive</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-gear-fill"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" th:href="@{'car-toggle-status/' + *{id}}">toggel status</a></li>
+                      <li><a class="dropdown-item" th:href="@{'update-post/' + *{id}}">edit</a></li>
+                      <li><a class="dropdown-item" th:href="@{'delete-car/' + *{id}}">remove</a></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <div th:replace="/fragments/footer"></div>
+  </body>
+</html>

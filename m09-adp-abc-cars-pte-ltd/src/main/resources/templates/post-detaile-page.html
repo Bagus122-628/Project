@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <title>car detail</title>
+  </head>
+
+  <body>
+    <div th:replace="/fragments/header"></div>
+    <main th:object="${car}">
+      <div class="row container">
+        <div class="col">
+          <img th:src="@{|/images/*{photo}|}" class="thumnile" alt="..." />
+        </div>
+        <div class="col">
+          <span class="h3 fw-bolder" th:text="*{model}"></span>
+          <span class="h3" th:text="*{make}"></span>
+          <span class="text-muted" th:text="*{year}"></span>
+          <hr />
+          <div class="d-flex justify-content-between">
+            <span class="text-muted">Price: $[[*{price}]]</span>
+            <span class="text-muted">[[*{publishOn}]]</span>
+          </div>
+          <hr />
+          <p th:text="*{description}"></p>
+          <div class="text-muted">
+            <i class="bi bi-envelope-open-fill"> : </i> <span th:text="*{publisher.username}"></span><br />
+            <i class="bi bi-telephone-fill"> : </i> <span th:text="*{publisher.phoneNumber}"></span>
+          </div>
+          <hr />
+          <form th:action="@{'/bidding/' + ${car.id}}" method="post" th:object="${bidding}" class="row">
+            <div class="input-group col">
+              <span class="input-group-text">Price: </span>
+              <input type="number" class="form-control" placeholder="eg. 199" aria-label="price" th:field="*{price}" />
+            </div>
+            <button type="submit" class="col m-auto btn btn-primary">bid to this car</button>
+          </form>
+        </div>
+        <div class="col-2">
+          <h3>bidding lisst</h3>
+          <ul>
+            <li th:each="list : ${lists}">
+              <span th:text="${list.user.username}"></span>
+              <span th:text="'bid at : $' + ${list.price}"></span><br />
+              <span th:text="'status : ' + ${list.status}"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <div th:replace="/fragments/footer"></div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <title>Login page</title>
+  </head>
+  <body>
+    <div th:replace="/fragments/header"></div>
+    <main class="form-signin text-center login-page p-5">
+      <form th:action="@{/loginUser}" method="post" class="m-auto form-size">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <div th:if="${param.error} " class="alert alert-danger">invalid username or password</div>
+        <div th:if="${logout}" class="alert alert-success">logout success</div>
+        <div th:if="${message}" class="alert alert-success">[[${message}]]</div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" autofocus required />
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required />
+          <label for="floatingPassword">Password</label>
+        </div>
+
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+        <div class="checkbox mb-3">
+          <label> <input type="checkbox" value="remember-me" /> Remember me </label>
+        </div>
+        <button class="w-100 btn btn-primary" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
+      </form>
+    </main>
+    <div th:replace="/fragments/footer"></div>
+  </body>
+</html>

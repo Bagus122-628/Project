@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <title>Search</title>
+  </head>
+
+  <body>
+    <div th:replace="/fragments/header"></div>
+    <main class="login-page">
+      <section class="kontak kontak-title bg-primary text-white py-2">
+        <div class="container d-flex justify-content-between align-items-center">
+          <form th:action="@{/search}">
+            <input type="search" name="keyword" placeholder="keyword: make or model" />
+            <input type="number" name="minPrice" placeholder="min-price eg. $100" />
+            <input type="number" name="maxPrice" placeholder="max-price eg. $1000" />
+            <input type="submit" value="search" />
+          </form>
+          <a href="post" class="btn btn-success">add</a>
+        </div>
+      </section>
+      <section class="container my-4" style="min-height: 50vh">
+        <div class="alert alert-warning" th:if="${message}" th:text="${message}"></div>
+        <div class="row row-cols-auto d-flex">
+          <div th:each="list : ${lists}" class="m-2 p-0">
+            <div th:if="${list.isActive}" class="card shadow p-2 col" style="width: 20vw">
+              <img th:src="@{|/images/${list.photo}|}" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <span class="h3 fw-bolder" th:text="${list.model}"></span>
+                <span class="h3" th:text="${list.make}"></span>
+                <span class="text-muted" th:text="${list.year}"></span>
+                <hr />
+                <div class="text-muted">
+                  <i class="bi bi-envelope-open-fill"> : </i> <span th:text="${list.publisher.username}"></span><br />
+                  <i class="bi bi-telephone-fill"> : </i> <span th:text="${list.publisher.phoneNumber}"></span>
+                </div>
+                <hr />
+                <div class="d-flex">
+                  <span class="text-muted">Price: $[[${list.price}]]</span>
+
+                  <a th:href="@{'post-detaile/' + ${list.id}}" class="btn btn-outline-secondary ms-auto"> details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div th:replace="/fragments/footer"></div>
+  </body>
+</html>

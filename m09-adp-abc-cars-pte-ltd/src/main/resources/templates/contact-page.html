@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <title>Contact Us</title>
+  </head>
+
+  <body>
+    <div th:replace="/fragments/header"></div>
+    <main>
+      <section class="kontak kontak-title bg-primary text-white py-2">
+        <div class="container">
+          <h1 class="text-center">CONTACT US</h1>
+        </div>
+      </section>
+      <section class="kontak kontak-maps">
+        <iframe
+          title="map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.234133373455!2d110.36719351417666!3d-7.764977194403684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f41f2c7bd9a7%3A0x4aa21aa2b5301ca0!2sNiagahoster!5e0!3m2!1sid!2s!4v1479954361368"
+          style="border: 0"
+          allowfullscreen=""
+          width="100%"
+          height="380"
+        ></iframe>
+      </section>
+      <section class="kontak kontak-content p-5 container">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-8">
+              <p class="font-r-normal">
+                Niagahoster adalah layanan hosting murah unlimited dengan cPanel dan server Indonesia. Layanan hosting Indonesia kelas bisnis yang menggunakan data center bersertifikasi tier-4 yang canggih dan modern dari DCI Indonesia.
+                Layanan hosting yang menjamin kualitas uptime dan akses website yang cepat.
+              </p>
+              <p class="font-r-normal">
+                Niagahoster merupakan bagian dari Hostinger Group, sebuah grup hosting international yang menangani lebih dari 500 server di seluruh dunia. Dengan pengalaman yang dimiliki, Niagahoster merupakan pilihan terbaik untuk
+                meningkatkan kredibilitas bisnis dan website Anda.
+              </p>
+              <p class="font-r-normal">
+                Selain layanan web hosting, Niagahoster juga menyediakan domain murah, domain internasional maupun domain Indonesia, server VPS murah, keamanan SSL/HTTPS, email hosting, jasa pembuatan website, hingga periklanan Google
+                Adwords.
+              </p>
+            </div>
+            <div class="col-lg-4 col-md-4">
+              <h3 class="font-m-light">F.A.Q</h3>
+              <ul class="arrows_list1">
+                <li><a href="https://www.niagahoster.co.id/kb/cara-membuat-website-dengan-wordpress-di-niagahoster">Bagaimana cara membuat website?</a></li>
+                <li><a href="https://www.niagahoster.co.id/kb/mengarahkan-domain-niagahoster-ke-weebly">Mengarahkan Domain Niagahoster ke Weebly?</a></li>
+                <li><a href="https://www.niagahoster.co.id/kb/cara-menginstal-wordpress-softaculous-niagahoster">Cara Menginstal WordPress Softaculous Niagahoster?</a></li>
+                <li><a href="https://www.niagahoster.co.id/kb/cara-melakukan-konfigurasi-email-pada-outlook">Cara Melakukan Konfigurasi Email pada Outlook?</a></li>
+                <li><a href="https://www.niagahoster.co.id/kb/bagaimana-mengupdate-nameserver">Bagaimana mengupdate nameserver??</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-6 mt-3 pe-5">
+              <h3 class="font-m-light no-transform">Tiket Bantuan 24/7</h3>
+              <form method="post" action="" id="contact-form" name="contact_form" class="form-horizontal">
+                <div class="col-lg-6 col-ms-6">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                      <input class="form-control" type="text" name="name" placeholder="Nama" id="input-name" required="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-ms-6">
+                  <div class="form-group">
+                    <div class="input-group input-margin">
+                      <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                      <input class="form-control" type="text" name="email" placeholder="Email" id="input-email" required="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-12 col-ms-12 input-group">
+                    <span class="input-group-addon"><i class="fa fa-file-text-o fa-fw"></i></span>
+                    <input class="form-control" type="text" name="subject" placeholder="Subjek" id="input-subject" required="" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-12 col-ms-12 input-group">
+                    <span class="input-group-addon input-message"><em class="fa fa-comment fa-fw"></em></span>
+                    <textarea type="text" name="message" rows="4" class="form-control" placeholder="Pertanyaan" id="input-message"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-12 col-ms-12 text-right">
+                    <button id="submit" class="btn btn-primary" type="submit">Kirim Sekarang</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-4 col-md-4 mar_top3">
+              <h3 class="font-m-light no-transform">Kantor</h3>
+              <p class="font-r-bold">PT. Web Media Technology Indonesia</p>
+              <p class="font-r-normal no-margin">Jl. Palagan Tentara Pelajar<br />No 81 Jongkang, Sariharjo, Ngaglik, Sleman<br />Daerah Istimewa Yogyakarta 55581, Indonesia</p>
+              <p class="font-r-normal no-margin">
+                Support: <a href="mailto:cs@niagahoster.co.id">cs@niagahoster.co.id</a><br />
+                Billing: <a href="mailto:pembayaran@niagahoster.co.id">pembayaran@niagahoster.co.id</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div th:replace="/fragments/footer"></div>
+  </body>
+</html>
